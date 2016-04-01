@@ -18,5 +18,7 @@ from django.contrib import admin
 
 urlpatterns = [
     #URL del Administrador del Sitio (Usuario Programador)
-    url(r'^mentalheal/admin/', admin.site.urls),
+    url(r'^$', include('home.urls')),
+    url(r'^home/', include('home.urls')),
+    url(r'^admin/', include(admin.site.urls)),
 ]
