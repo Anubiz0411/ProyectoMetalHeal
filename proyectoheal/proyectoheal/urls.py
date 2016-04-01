@@ -20,5 +20,7 @@ urlpatterns = [
     #URL del Administrador del Sitio (Usuario Programador)
     url(r'^$', include('home.urls')),
     url(r'^home/', include('home.urls')),
+    url(r'^accounts/', include('accounts.urls')),
     url(r'^admin/', include(admin.site.urls)),
+
 ]
