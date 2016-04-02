@@ -1,3 +1,4 @@
+# coding=utf-8
 """proyectoheal URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -15,6 +16,8 @@ Including another URLconf
 """
 from django.conf.urls import *
 from django.contrib import admin
+# Añade esto, al inicio del documento
+from django.conf import settings
 
 urlpatterns = [
     #URL del Administrador del Sitio (Usuario Programador)
@@ -24,3 +27,13 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
 
 ]
+
+# Añade esto, al final del documento
+if settings.DEBUG:
+    # static files (images, css, javascript, etc.)
+    urlpatterns.append(
+        # /media/:<mixed>path/
+        url(
+            regex=r'^media/(?P<path>.*)$',
+            view='django.views.static.serve',
+            kwargs={'document_root': settings.MEDIA_ROOT}))

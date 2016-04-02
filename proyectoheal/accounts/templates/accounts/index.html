@@ -1,0 +1,13 @@
+<!-- accounts/templates/accounts/index.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Perfil de usuario{% endblock title %}
+
+{% block content %}
+<div class="page-header"><h2><h2>Perfil de usuario</h2></div>
+    Hola de nuevo {{ user.username }}<br>
+    <div>
+        <img src="{{ MEDIA_URL }}{{ user.userprofile.photo }}" alt="Imagen de {{ user.username }}" />
+    </div>
+{% endblock content %}

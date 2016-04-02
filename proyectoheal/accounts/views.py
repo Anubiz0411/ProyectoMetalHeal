@@ -8,7 +8,42 @@ from django.core.urlresolvers import reverse
 
 from .forms import RegistroUserForm
 from .models import UserProfile
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
+
+
+
+@login_required
+def index_view(request):
+    return render(request, 'accounts/index.html')
+
+
+def login_view(request):
+    # Si el usuario esta ya logueado, lo redireccionamos a index_view
+    if request.user.is_authenticated():
+        return redirect(reverse('accounts.index'))
+    mensaje = ''
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                return redirect(reverse('accounts.index'))
+            else:
+                # Redireccionar informando que la cuenta esta inactiva
+                # Lo dejo como ejercicio al lector :)
+                pass
+        mensaje = 'Nombre de usuario o contraseña no valido'
+    return render(request, 'accounts/login.html', {'mensaje': mensaje})
+
+def logout_view(request):
+    logout(request)
+    messages.success(request, 'Te has desconectado con exito.')
+    return redirect(reverse('accounts.login'))
 
 def registro_usuario_view(request):
     if request.method == 'POST':
