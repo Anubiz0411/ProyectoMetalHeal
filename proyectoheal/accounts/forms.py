@@ -44,3 +44,19 @@ class RegistroUserForm(forms.Form):
         if password != password2:
             raise forms.ValidationError('Las contraseñas no coinciden.')
         return password2
+
+class RecuperarUserForm(forms.Form):
+    
+    username = forms.CharField(
+        min_length=5,
+        widget=forms.TextInput(attrs={'class': 'form-control'}))
+
+    def clean_username(self):
+        """Comprueba que no exista un username igual en la db"""
+        username = self.cleaned_data['username']
+        if User.objects.filter(username=username):
+            raise forms.ValidationError('Se a enviado un mensaje a su correo.')
+        else:
+            raise forms.ValidationError('No existe este usuario en la app.')
+
+        return username

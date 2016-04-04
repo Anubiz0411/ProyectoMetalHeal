@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
 
-from .forms import RegistroUserForm
+from .forms import RegistroUserForm, RecuperarUserForm
 from .models import UserProfile
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -44,6 +44,29 @@ def logout_view(request):
     logout(request)
     messages.success(request, 'Te has desconectado con exito.')
     return redirect(reverse('accounts.login'))
+
+def recuperar_contrasena_view(request):
+    if request.method == 'POST':
+        # Si el method es post, obtenemos los datos del formulario
+        form = RecuperarUserForm(request.POST, request.FILES)
+
+        # Comprobamos si el formulario es valido
+        if form.is_valid():
+            # En caso de ser valido, obtenemos los datos del formulario.
+            # form.cleaned_data obtiene los datos limpios y los pone en un
+            # diccionario con pares clave/valor, donde clave es el nombre del campo
+            # del formulario y el valor es el valor si existe.
+            cleaned_data = form.cleaned_data
+            username = cleaned_data.get('username')
+            return redirect(reverse('accounts.gracias'))
+    else:
+        # Si el mthod es GET, instanciamos un objeto RegistroUserForm vacio
+        form = RecuperarUserForm()
+    # Creamos el contexto
+    context = {'form': form}
+    # Y mostramos los datos
+    return render(request, 'accounts/recuperar.html', context)
+
 
 def registro_usuario_view(request):
     if request.method == 'POST':
