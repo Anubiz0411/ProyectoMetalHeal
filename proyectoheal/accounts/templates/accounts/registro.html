@@ -9,14 +9,17 @@
     <div class="row">
         <div class="col-md-6 col-sm-offset-3">
             <div class="page-header">
-                <h2>Registro Usuario</h2>
+                <h2>Registro de Usuario</h2>
             </div>
 
-            <form method="post" action="" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="btn btn-primary">Registrar</button>
-            </form>
-        </div>
-    </div>
+            <div class="row">
+                <a href="{% url 'accounts.registro_eps' %}" class="btn btn-primary btn-lg btn-block" role="button">Entidades Medicas EPS</a>
+                <a href="{% url 'accounts.registro_especialista' %}" class="btn btn-default btn-lg btn-block" role="button">Medico Especialista</a>
+                <a href="{% url 'accounts.registro_usuario' %}" class="btn btn-default btn-lg btn-block" role="button">Medico General</a>
+                <a href="{% url 'accounts.registro_usuario' %}" class="btn btn-default btn-lg btn-block" role="button">Paciente</a>
+
+ 
+            </div>
+        
+
 {% endblock content %}

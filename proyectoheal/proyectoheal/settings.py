@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'accounts',
 ]
 
+
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -85,7 +86,7 @@ DATABASES = {
         'NAME': 'bd_mentalheal',
         'USER': 'root',
         'PASSWORD':'',
-        'HOST':'127.0.0.1',
+        'HOST':'',
         'PORT':'',
     }
 }
@@ -137,3 +138,11 @@ STATICFILES_DIRS = (
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# EMAIL SETTINGS
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'andres.lopez0411@gmail.com'
+DEFAULT_FROM_EMAIL = 'andres.lopez0411@gmail.com'
+EMAIL_HOST_PASSWORD = 'AndresLopez'
+EMAIL_USE_TLS = True

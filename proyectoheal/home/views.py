@@ -2,9 +2,7 @@
 
 from django.shortcuts import render
 from django.utils import timezone
+from django.template import RequestContext
 
 def index_view(request):
-    context = {
-        'ahora': timezone.now()
-    }
-    return render(request, 'home/index.html', context)
+    return render(request, 'home/index.html')

@@ -1,13 +1,16 @@
 <!-- accounts/templates/accounts/index.html -->
 
-{% extends 'base.html' %}
+{% extends 'accounts/base_accounts.html' %}
 
 {% block title %}Perfil de usuario{% endblock title %}
 
-{% block content %}
+{% block accounts_content %}
 <div class="page-header"><h2><h2>Perfil de usuario</h2></div>
-    Hola de nuevo {{ user.username }}<br>
-    <div>
-        <img src="{{ MEDIA_URL }}{{ user.userprofile.photo }}" alt="Imagen de {{ user.username }}" />
-    </div>
-{% endblock content %}
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Hola, {{ user.first_name }}</h1>
+        <p>Bienvenido a la aplicacion MentalHeal, por ahora estamos en contruccion, cuando estemos listo lo sabras</p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+     
+   
+{% endblock accounts_content %}
