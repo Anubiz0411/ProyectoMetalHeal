@@ -1,0 +1,22 @@
+<!-- home/templates/home/contact.html -->
+
+{% extends 'base.html' %}
+
+{% block title %}Contacto{% endblock title %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6 col-sm-offset-3">
+            <div class="page-header">
+                <p>Tiene alguna Duda, queja o sujerencia?</p>
+                <h2>Contactenos</h2>
+            </div>
+
+            <form method="post" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Enviar</button>
+                <button type="submit" class="btn btn-primary" onclick="history.back()">Atras</button>
+            </form>
+
+{% endblock content %}
