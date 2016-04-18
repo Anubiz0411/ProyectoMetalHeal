@@ -229,20 +229,34 @@ class RecuperarUserForm(forms.Form):
         min_length=8,
         widget=forms.TextInput(attrs={'class': 'form-control'}))
 
+    email = forms.EmailField(
+            label='Correo',
+            min_length=8,
+            widget=forms.EmailInput(attrs={'class': 'form-control'}))
+
     def clean_username(self):
         """Comprueba que no exista un username igual en la db"""
         username = self.cleaned_data['username']
         if User.objects.filter(username=username):
-            send_mail(username, 
+            pass
+        else:
+            raise forms.ValidationError('El usuario no esta Registrado')
+        return username
+
+    def clean_email(self):
+        """Comprueba que no exista un email igual en la db"""
+        email = self.cleaned_data['email']
+        if User.objects.filter(email=email):
+            send_mail('Cambio de Contraseña', 
             'Para cambiar su contraseña dirijase al siguiente enlace', 
             EMAIL_HOST_USER, 
-            ['andres.lopez0411@gmail.com'], 
+            [email], 
             fail_silently=False)
-            raise forms.ValidationError('Se a enviado un mensaje a su correo.')
+            pass
         else:
-            raise forms.ValidationError('No existe este usuario en la app.')
+            raise forms.ValidationError('Este correo no corresponde a su usuario.')
+        return email
 
-        return username
     
 #FORMULARIO PARA CAMBIAR CORREO
 class EditarEmailForm(forms.Form):

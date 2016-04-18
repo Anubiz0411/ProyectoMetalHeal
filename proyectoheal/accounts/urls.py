@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^logout/$', views.logout_view, name='accounts.logout'),
     
     url(r'^recuperar/$', views.recuperar_contrasena_view, name='accounts.recuperar'),
+    url(r'^recuperar_msj$', views.recuperar_msj_view, name='accounts.recuperar_msj'),
     
 	url(r'^editar_email/$', views.editar_email, name='accounts.editar_email'),
 	url(r'^editar_perfil/$', views.editar_perfil, name='accounts.editar_perfil'),

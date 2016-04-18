@@ -269,11 +269,12 @@ def recuperar_contrasena_view(request):
         if form.is_valid():
             # En caso de ser valido, obtenemos los datos del formulario.
             # form.cleaned_data obtiene los datos limpios y los pone en un
-            # diccionario con pares clave/valor, donde clave es el nombre del cam                           po
+            # diccionario con pares clave/valor, donde clave es el nombre del campo
             # del formulario y el valor es el valor si existe.
             cleaned_data = form.cleaned_data
             username = cleaned_data.get('username')
-            return redirect(reverse('accounts.gracias'))
+            email = cleaned_data.get('email')
+            return render(request, 'accounts/recuperar_msj.html', {'email': email})
     else:
         # Si el mthod es GET, instanciamos un objeto RegistroUserForm vacio
         form = RecuperarUserForm()
@@ -281,6 +282,9 @@ def recuperar_contrasena_view(request):
     context = {'form': form}
     # Y mostramos los datos
     return render(request, 'accounts/recuperar.html', context)
+
+def recuperar_msj_view(request, email):
+    return render(request, 'accounts/recuperar_msj.html', {'email': email})
 
 @login_required
 def editar_email(request):
