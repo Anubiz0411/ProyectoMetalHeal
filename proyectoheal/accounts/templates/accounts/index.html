@@ -1,16 +1,44 @@
-<!-- accounts/templates/accounts/index.html -->
-
 {% extends 'accounts/base_accounts.html' %}
 
 {% block title %}Perfil de usuario{% endblock title %}
 
 {% block accounts_content %}
 <div class="page-header"><h2><h2>Perfil de usuario</h2></div>
-    <div class="jumbotron">
-      <div class="container">
-        <h1>Hola, {{ user.first_name }}</h1>
-        <p>Bienvenido a la aplicacion MentalHeal, por ahora estamos en contruccion, cuando estemos listo lo sabras</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
-     
-   
+    Tipo de Documento:  {%if usuario.type_doc == 'NI' %}
+                            NIT
+                        {% elif usuario.type_doc == 'CC' %}
+                            CEDULA DE CIUDADANIA
+                        {% elif usuario.type_doc == 'CE' %}
+                            CEDULA DE EXTRANGERIA
+                        {% elif usuario.type_doc == 'TI' %}
+                            TARJETA DE IDENTIDAD
+                        {% endif %}<br><br>
+    Documento:             {{ usuario.user.username }}<br><br>
+    Nombres:             {{ usuario.user.first_name }}<br><br>
+    Apellidos:             {{ usuario.user.last_name }}<br><br>
+    Foto:               <img src="{{ MEDIA_URL }}{{ usuario.photo }}" alt="Imagen de {{ user.username }}" " width="50" height="50" /><br><br>
+    Email :             {{usuario.user.email}}<br><br>
+    Tipo de usuario:    {%if usuario.type_user == 'PA' %}
+                            Paciente
+                        {% elif usuario.type_user == 'GE' %}
+                            Medico General
+                        {% elif usuario.type_user == 'ES' %}
+                            Medico Especialista
+                        {% elif usuario.type_user == 'EP' %}
+                            EPS
+                        {% elif usuario.type_user == 'SU' %}
+                            Administrador
+                        {% endif %}
+                        <br><br>
+    Genero:             {%if usuario.type_gen == 'H' %}
+                            Hombre
+                        {% elif usuario.type_user == 'M' %}
+                            Mujer
+                        {% elif usuario.type_user == 'O' %}
+                            Otro
+                        {% endif %}
+                        <br><br>
+    Telefono:             {{ usuario.phone }}<br><br>
+    Direccion:             {{ usuario.direccion }}<br><br>
+    Fecha de nacimiento:             {{ usuario.birthday }}<br><br>
 {% endblock accounts_content %}

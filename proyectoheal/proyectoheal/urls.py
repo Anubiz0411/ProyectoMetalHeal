@@ -18,6 +18,7 @@ from django.conf.urls import *
 from django.contrib import admin
 # Añade esto, al inicio del documento
 from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     #URL del Administrador del Sitio (Usuario Programador)
@@ -31,6 +32,7 @@ urlpatterns = [
 # Añade esto, al final del documento
 if settings.DEBUG:
     # static files (images, css, javascript, etc.)
+    urlpatterns+=static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
     urlpatterns.append(
         # /media/:<mixed>path/
         url(

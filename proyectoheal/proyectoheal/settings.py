@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.admindocs',
     'home',
     'accounts',
+    'registration',
+    'crispy_forms',
+    'datetimewidget',
 ]
 
 
@@ -83,7 +86,7 @@ WSGI_APPLICATION = 'proyectoheal.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'bd_mentalheal',
+        'NAME': 'bd_mentalheal_1',
         'USER': 'root',
         'PASSWORD':'',
         'HOST':'',

@@ -1,13 +1,11 @@
-<!--accounts/templates/accounts/login.html -->
-
 {% extends 'base.html' %}
 
-{% block title %}Ingresar al Sistema{% endblock title %}
+{% block title %}Login{% endblock title %}
 
 {% block content %}
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
-            <div class="page-header"><h2>Bienvenido a MentalHeal</h2></div>
+            <div class="page-header"><h2>Login</h2></div>
             {% if mensaje %}
                 <div class="alert alert-danger">
                     {{ mensaje }}
@@ -17,20 +15,16 @@
             <form method="post" action="">
                 {% csrf_token %}
                 <div class="form-group">
-                    <span class="glyphicon glyphicon-user"></span>
-                    <label class="control-label" for="username"> Usuario</label>
-                    <input type="text" id="username" name="username" class="form-control" placeholder="Introduce tu Numero de Cedula" value="{{ username }}">
+                    <label class="control-label" for="username">Documento</label>
+                    <input type="text" id="username" name="username" class="form-control" value="{{ username }}">
                 </div>
                 <div class="form-group">
-                    <span class="glyphicon glyphicon-lock"></span>
-                    <label for="password"> Contraseña</label>
-                    <input type="password" name="password" id="password" class="form-control" placeholder="Introduce tu Contraseña">
+                    <label for="password">Contraseña</label>
+                    <input type="password" name="password" id="password" class="form-control">
                 </div>
-                 <button type="submit" class="btn btn-primary">Ingresar</button>
-                <a href="{% url 'accounts.registro' %}" class="btn btn-primary" role="button">Registrarse</a>
+                <button type="submit" class="btn btn-primary">Login</button>
             </form>
-            <p align="center"><a href="{% url 'accounts.recuperar' %}" class="btn btn-link" role="button">¿Olvido su Contraseña?</a></p>
-        
-
-    
+            
+        </div>
+    </div>
 {% endblock content %}

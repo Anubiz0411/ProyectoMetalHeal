@@ -1,16 +1,8 @@
-<!-- accounts/templates/accounts/gracias.html -->
-
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block title %}Gracias por registrarte{% endblock title %}
 
 {% block content %}
-    <div class="jumbotron">
-      <div class="container">
-        <h1>Hello, world!</h1>
-        <h2>{{ first_name }} gracias por registrarte!</h2>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
-      </div>
-    </div>
+    <h2>{{ username }} gracias por registrarte!</h2>
 {% endblock content %}

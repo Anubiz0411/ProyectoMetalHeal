@@ -1,0 +1,45 @@
+{% extends 'accounts/base_accounts.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Gestion de usuarios activos{% endblock title %}
+
+
+{% block accounts_content %}
+    <h2 class="page-header">Gestion de usuarios activos</h2>
+    {% for user in to_validate %}
+    <form method="post" action="">
+        
+       
+        <div class="row">
+                   <div class="col-xs-4"> <font style="text-transform: uppercase;">{{ user.user.username }}</font></div>
+                   <div class="col-xs-4"> <font style="text-transform: uppercase;">{{ user.first_name }}</font></div>
+
+                   <div class="col-xs-4">{%if user.type_user == 'PA' %}
+                            Paciente
+                        {% elif user.type_user == 'GE' %}
+                            Medico General
+                        {% elif user.type_user == 'ES' %}
+                            Medico Especialista
+                        {% elif user.type_user == 'EP' %}
+                            EPS
+                        {% elif user.type_user == 'SU' %}
+                            Administrador
+                        {% endif %}</div>
+                   <div class="col-xs-3">
+                                               {% csrf_token %}
+                        {{ form|crispy }}
+                        <button name="usuario" type="submit" class="btn btn-primary "   style="background-color: #0411FF" value="editar@{{ user.user.username }}">Editar</button>
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <button name="usuario" type="submit" class="btn btn-primary "   style="background-color: #FFF204" value="validar@{{ user.user.username }}">Validar</button>
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <button name="usuario" type="submit" class="btn btn-primary "   style="background-color: #FC0414" value="borrar@{{ user.user.username }}">Borrar</button>
+
+                    </div>
+        </div>
+    </form>
+    {% endfor %}
+{% endblock accounts_content %}
+
+
+

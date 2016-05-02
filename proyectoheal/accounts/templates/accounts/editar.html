@@ -1,15 +1,14 @@
-<!-- accounts/templates/accounts/editar_email.html -->
-
 {% extends 'accounts/base_accounts.html' %}
+{% load crispy_forms_tags %}
 
 {% block title %}Editar Perfil{% endblock title %}
 
 {% block accounts_content %}
     <h2 class="page-header">Editar Perfil</h2>
-    <form method="post" action="">
+    <form method="post" action="" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button class="btn btn-primary" type="submit">Actualizar Perfil</button>
+        {{ form|crispy }}
+        <button class="btn btn-primary" type="submit">Actualizar contraseña</button>
         <a href="{% url 'accounts.index' %}" class="btn btn-warning" type="submit">Cancelar</a>
     </form>
 {% endblock accounts_content %}

@@ -10,7 +10,7 @@ from django.contrib.admin.widgets import AdminDateWidget
 from django.contrib.admin import widgets
 from django.forms.extras.widgets import SelectDateWidget
 from django.forms import ModelForm, Form
-from datetimewidget.widgets import DateWidget,TimeWidget
+from datetimewidget.widgets import DateWidget
 
 
 
@@ -67,18 +67,6 @@ class EditarForm(forms.Form):
     photo = forms.ImageField(label="Foto", required=False)
     birthday = forms.DateField(widget = widgets.AdminDateWidget(), label="Fecha de nacimiento", required=True)
 
-    def clean_email(self):
-        email = self.cleaned_data['email']
-        if User.objects.filter(email=email):
-            raise forms.ValidationError('Ya existe un email igual en la base de datos')
-        return email
-    def clean_phone(self):
-        phn = self.cleaned_data['phone']
-        if not phn.isdigit():
-            raise forms.ValidationError('Solo puede contener números')
-        if len(phn) != 7 and len(phn) != 10:
-            raise forms.ValidationError('Telefono inválido.')
-        return phn
 
 class ResetPasswordForm(forms.Form):
     email = forms.EmailField(
@@ -89,17 +77,7 @@ class ResetPasswordForm(forms.Form):
 class ValidateUserForm(forms.Form):
 
     elegido = forms.BooleanField()
-    
 
-
-class RegistrationScheduleForm(forms.Form):
-    dateTimeOptions = {
-        'format': 'yyyy-mm-dd',
-        'autoclose': True,
-        'showMeridian' : True
-    }
-    hora =forms.TimeField(widget=TimeWidget(usel10n=True, bootstrap_version=3))
-    fecha=forms.DateField(widget=DateWidget(attrs={'id':"yourdatetimeid"}, bootstrap_version=3, options=dateTimeOptions), label="Fecha de nacimiento", required=True) 
 
 
 class RegistrationUserForm(forms.Form):
@@ -173,12 +151,10 @@ class RegistrationUserForm(forms.Form):
 
     password = forms.CharField(
         min_length=5,
-        label="Contraseña",
         widget=forms.PasswordInput(attrs={'class': 'form-control'}))
 
     password2 = forms.CharField(
         min_length=5,
-        label="Repetir Contraseña",
         widget=forms.PasswordInput(attrs={'class': 'form-control'}))
     photo = forms.ImageField(label="Foto",required=False)
     birthday  = forms.DateField(widget=DateWidget(attrs={'id':"yourdatetimeid"}, bootstrap_version=3, options=dateTimeOptions), label="Fecha de nacimiento", required=True)
@@ -188,27 +164,18 @@ class RegistrationUserForm(forms.Form):
             raise forms.ValidationError('Documento ya registrado.')
         return usr
 
-    def clean_email(self):
-        email = self.cleaned_data['email']
-        if User.objects.filter(email=email):
-            raise forms.ValidationError('Ya existe un email igual en la base de datos')
-        return email
-    def clean_phone(self):
-        phn = self.cleaned_data['phone']
-        if not phn.isdigit():
-            raise forms.ValidationError('Solo puede contener números')
-        if len(phn) != 7 and len(phn) != 10:
-            raise forms.ValidationError('Telefono inválido.')
-        return phn
+    #def clean_email(self):
+    #    email = self.cleaned_data['email']
+    #    if User.objects.filter(email=email):
+    #        raise forms.ValidationError('Ya existe un email igual en la base de datos')
+    #    return email
     
     def clean_password2(self):
         password = self.cleaned_data['password']
         password2= self.cleaned_data['password2']
         first_isalpha = password[0].isalpha()
-        if password == password.lower():
-            raise forms.ValidationError('La password debe contener al menos una letra en mayúscula.')
         if all(c.isalpha() == first_isalpha for c in password):
-            raise forms.ValidationError("La password debe contener mínimo 8 caracteres, incluyendo una letra mayúscula y números.")
+            raise forms.ValidationError("La mínimo 8 caracteres, incluyendo una letra mayúscula y números.")
         if len(password) < 8:
             raise forms.ValidationError('La password debe tener al menos 8 caracteres.')
         if password!=password2:
@@ -236,13 +203,6 @@ class EditarContrasenaForm(forms.Form):
         """Comprueba que password y password2 sean iguales."""
         password = self.cleaned_data['password']
         password2 = self.cleaned_data['password2']
-        first_isalpha = password[0].isalpha()
-        if password == password.lower():
-            raise forms.ValidationError('La password debe contener al menos una letra en mayúscula.')
-        if all(c.isalpha() == first_isalpha for c in password):
-            raise forms.ValidationError("La password debe contener mínimo 8 caracteres, incluyendo una letra mayúscula y números.")
-        if len(password) < 8:
-            raise forms.ValidationError('La password debe tener al menos 8 caracteres.')
         if password != password2:
             raise forms.ValidationError('Las contraseñas no coinciden.')
         return password2

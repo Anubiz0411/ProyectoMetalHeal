@@ -1,14 +1,18 @@
 {% extends 'base.html' %}
+{%block link%}{%endblock link%}
+{% load crispy_forms_tags %}
 
 {% block content %}
     <div class="row">
         <div class="col-md-2">
             <div class="list-group">
-                <!--<img src="{{ MEDIA_URL }}{{ user..photo }}">-->
-                <a href="{% url 'accounts.editar_perfil' %}" class="list-group-item">Editar Perfil</a>
-                <a href="{% url 'accounts.editar_email' %}" class="list-group-item">Editar Correo</a>
-                <a href="{% url 'accounts.editar_contrasena' %}" class="list-group-item">Editar Contraseña</a>
-                <a href="#" class="list-group-item">Editar foto</a>
+                {% if usuario.type_user == 'SU' or usuario.type_user == 'EP' %}
+                <a href="{% url 'accounts.validate' %}" class="list-group-item">Validar</a>
+                <a href="{% url 'accounts.gestion_usuario' %}" class="list-group-item">Gestion Usuario</a>
+                {% endif %}
+                <a href="{% url 'accounts.editar_password' %}" class="list-group-item">Editar contraseña</a>
+                <a href="{% url 'accounts.editar_usuario' %}" class="list-group-item">Editar Perfil</a>
+
             </div>
         </div>
         <div class="col-md-10">

@@ -1,0 +1,52 @@
+
+
+{% extends 'accounts/base_accounts.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Validacion de usuario{% endblock title %}
+
+
+{% block accounts_content %}
+    <h2 class="page-header">Validar</h2>
+    {% for user in to_validate %}
+    <form method="post" action="">
+        <style type="text/css">
+    table {
+       border:1px solid black;
+       border-collapse:separate;
+       }
+    th, td {
+       border:1px solid black;
+       
+       padding: 20px;
+       }
+ </style>
+        <table >
+        
+        <tr>
+                   <th> <font style="text-transform: uppercase;">{{ user.user.username }}</font></th>
+                    <th> <font style="text-transform: uppercase;">{{ user.user.first_name }}</font></th>
+
+                   <th>{%if user.type_user == 'PA' %}
+                            Paciente
+                        {% elif user.type_user == 'GE' %}
+                            Medico General
+                        {% elif user.type_user == 'ES' %}
+                            Medico Especialista
+                        {% elif user.type_user == 'EP' %}
+                            EPS
+                        {% elif user.type_user == 'SU' %}
+                            Administrador
+                        {% endif %}</th>
+                   <th>
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button name="usuario" type="submit" class="btn btn-primary" style="background-color: #20F205" value="validar@{{ user.user.username }}">Validar</button>
+                    {% csrf_token %}
+                    {{ form|crispy}}
+                    <button name="usuario" type="submit" class="btn btn-primary "   style="background-color: #FC0414" value="borrar@{{ user.user.username }}">Borrar</button>
+                    </th>
+        </tr>
+        </table>
+    </form>
+    {% endfor %}
+{% endblock accounts_content %}
