@@ -3,42 +3,120 @@
 {% block title %}Perfil de usuario{% endblock title %}
 
 {% block accounts_content %}
-<div class="page-header"><h2><h2>Perfil de usuario</h2></div>
-    Tipo de Documento:  {%if usuario.type_doc == 'NI' %}
-                            NIT
-                        {% elif usuario.type_doc == 'CC' %}
-                            CEDULA DE CIUDADANIA
-                        {% elif usuario.type_doc == 'CE' %}
-                            CEDULA DE EXTRANGERIA
-                        {% elif usuario.type_doc == 'TI' %}
-                            TARJETA DE IDENTIDAD
-                        {% endif %}<br><br>
-    Documento:             {{ usuario.user.username }}<br><br>
-    Nombres:             {{ usuario.user.first_name }}<br><br>
-    Apellidos:             {{ usuario.user.last_name }}<br><br>
-    Foto:               <img src="{{ MEDIA_URL }}{{ usuario.photo }}" alt="Imagen de {{ user.username }}" " width="50" height="50" /><br><br>
-    Email :             {{usuario.user.email}}<br><br>
-    Tipo de usuario:    {%if usuario.type_user == 'PA' %}
-                            Paciente
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Hola, {{ user.first_name }}</h1>
+        <p>Bienvenido a la aplicacion MentalHeal, por ahora estamos en contruccion, cuando estemos listo lo sabras</p>
+        <p><a class="btn btn-primary btn-lg" href="{% url 'home.about' %}" role="button">About &raquo;</a></p>
+        </div>
+        </div>
+    <div class="page-header"><h2><h2>Perfil de usuario</h2></div>
+        <form class="form-horizontal">
+                <div class="form-group">
+                 <label class="col-sm-2 control-label" for="formGroup">Foto</label>    
+                     <div class="input-group col-sm-3">
+                        <img src="{{ MEDIA_URL }}{{ usuario.photo }}"  class="img-rounded" width="50" height="50">
+                     </div><br><br>
+                <label class="col-sm-2 control-label" for="formGroup">Tipo de Usuario</label>
+                        {%if usuario.type_user == 'PA' %}
+                        <div class="input-group col-sm-3">
+                          <span class="input-group-addon"><span class="glyphicon glyphicon-th-list"></span></span>
+                          <input class="form-control" type="text" id="formGroup" value="PACIENTE" disabled>
+                        </div>
                         {% elif usuario.type_user == 'GE' %}
-                            Medico General
+                        <div class="input-group col-sm-3">
+                          <span class="input-group-addon"><span class="glyphicon glyphicon-th-list"></span></span>
+                          <input class="form-control" type="text" id="formGroup" value="MEDICO GENERAL" disabled>
+                        </div>
                         {% elif usuario.type_user == 'ES' %}
-                            Medico Especialista
+                        <div class="input-group col-sm-3">
+                          <span class="input-group-addon"><span class="glyphicon glyphicon-th-list"></span></span>
+                          <input class="form-control" type="text" id="formGroup" value="MEDICO ESPECIALISTA" disabled>
+                        </div>
                         {% elif usuario.type_user == 'EP' %}
-                            EPS
+                        <div class="input-group col-sm-3">
+                          <span class="input-group-addon"><span class="glyphicon glyphicon-th-list"></span></span>
+                          <input class="form-control" type="text" id="formGroup" value="EPS" disabled>
+                        </div>
                         {% elif usuario.type_user == 'SU' %}
-                            Administrador
-                        {% endif %}
-                        <br><br>
-    Genero:             {%if usuario.type_gen == 'H' %}
-                            Hombre
+                        <div class="input-group col-sm-3">
+                          <span class="input-group-addon"><span class="glyphicon glyphicon-th-list"></span></span>
+                          <input class="form-control" type="text" id="formGroup" value="ADMINISTRADOR" disabled>
+                        </div>
+                        {% endif %}<br><br>
+                <label class="col-sm-2 control-label" for="formGroup">Tipo de Documento</label>
+                        {%if usuario.type_doc == 'NI' %}
+                        <div class="input-group col-sm-3">
+                          <span class="input-group-addon"><span class="glyphicon glyphicon-th-list"></span></span>
+                          <input class="form-control" type="text" id="formGroup" value="NIT" disabled>
+                        </div>
+                        {% elif usuario.type_doc == 'CC' %}
+                        <div class="input-group col-sm-3">
+                          <span class="input-group-addon"><span class="glyphicon glyphicon-th-list"></span></span>
+                          <input class="form-control" type="text" id="formGroup" value="CEDULA DE CIUDADANIA" disabled>
+                        </div>
+                        {% elif usuario.type_doc == 'CE' %}
+                        <div class="input-group col-sm-3">
+                          <span class="input-group-addon"><span class="glyphicon glyphicon-th-list"></span></span>
+                          <input class="form-control" type="text" id="formGroup" value="CEDULA DE EXTRANGERIA" disabled>
+                        </div>
+                        {% elif usuario.type_doc == 'TI' %}
+                        <div class="input-group col-sm-3">
+                          <span class="input-group-addon"><span class="glyphicon glyphicon-th-list"></span></span>
+                          <input class="form-control" type="text" id="formGroup" value="TARJETA DE IDENTIDAD" disabled>
+                        </div>
+                        {% endif %}<br><br>
+                <label class="col-sm-2 control-label" for="formGroup" id="doc">Documento</label>
+                        <div class="input-group col-sm-3">
+                          <span class="input-group-addon"><span class="glyphicon glyphicon-barcode"></span></span>
+                          <input class="form-control" type="text" id="formGroup" value="{{ usuario.user.username }}" disabled>
+                        </div><br><br>
+                <label class="col-sm-2 control-label" for="formGroup" id="nom">Nombres</label>
+                        <div class="input-group col-sm-3">
+                          <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                          <input class="form-control" type="text" id="formGroup" value="{{ usuario.user.first_name }}" disabled>
+                        </div><br><br>
+                <label class="col-sm-2 control-label" for="formGroup" id="ape">Apellidos</label>
+                        <div class="input-group col-sm-4">
+                          <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                          <input class="form-control" type="text" id="formGroup" value="{{ usuario.user.last_name }}" disabled>
+                        </div><br><br>
+                <label class="col-sm-2 control-label" for="formGroup">Genero</label>
+                        {%if usuario.type_gen == 'H' %}
+                        <div class="input-group col-sm-3">
+                          <span class="input-group-addon"><span class="glyphicon glyphicon-th-list"></span></span>
+                          <input class="form-control" type="text" id="formGroup" value="HOMBRE" disabled>
+                        </div>
                         {% elif usuario.type_user == 'M' %}
-                            Mujer
+                        <div class="input-group col-sm-3">
+                          <span class="input-group-addon"><span class="glyphicon glyphicon-th-list"></span></span>
+                          <input class="form-control" type="text" id="formGroup" value="MUJER" disabled>
+                        </div>
                         {% elif usuario.type_user == 'O' %}
-                            Otro
-                        {% endif %}
-                        <br><br>
-    Telefono:             {{ usuario.phone }}<br><br>
-    Direccion:             {{ usuario.direccion }}<br><br>
-    Fecha de nacimiento:             {{ usuario.birthday }}<br><br>
+                        <div class="input-group col-sm-3">
+                          <span class="input-group-addon"><span class="glyphicon glyphicon-th-list"></span></span>
+                          <input class="form-control" type="text" id="formGroup" value="OTRO" disabled>
+                        </div>
+                        {% endif %}<br><br>
+                <label class="col-sm-2 control-label" for="formGroup" id="ema">Email</label>
+                        <div class="input-group col-sm-4">
+                          <span class="input-group-addon"><span class="glyphicon glyphicon-inbox"></span></span>
+                          <input class="form-control" type="text" id="formGroup" value="{{ usuario.user.email }}" disabled>
+                        </div><br><br>
+                <label class="col-sm-2 control-label" for="formGroup" id="tel">Telefono</label>
+                        <div class="input-group col-sm-3">
+                          <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
+                          <input class="form-control" type="text" id="formGroup" value="{{ usuario.user.phone }}" disabled>
+                        </div><br><br>
+                <label class="col-sm-2 control-label" for="formGroup" id="dir">Direccion</label>
+                        <div class="input-group col-sm-3">
+                          <span class="input-group-addon"><span class="glyphicon glyphicon-globe"></span></span>
+                          <input class="form-control" type="text" id="formGroup" value="{{ usuario.user.direccion }}" disabled>
+                        </div><br><br>
+                <label class="col-sm-2 control-label" for="formGroup" id="bir">Fecha de Naciemiento</label>
+                        <div class="input-group col-sm-3">
+                          <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                          <input class="form-control" type="text" id="formGroup" value="{{ usuario.user.birthday }}" disabled>
+                        </div><br><br>
+                        </div>
 {% endblock accounts_content %}

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="{% static 'jquery/jquery.js' %}">
     <link rel="stylesheet" href="{% static 'js/main.js' %}">
+    
 </head>
 
   <body>
@@ -43,7 +44,7 @@
               <li><a href="{% url 'home.contact' %}">Contact</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="{% url 'accounts.index' %}">{{ user.get_full_name }}</a></li>
+                <li><a href="{% url 'accounts.index' %}">{{ usuario.user.first_name }}</a></li>
                 <li><a href="{% url 'accounts.logout' %}">Salir</a></li>
               </ul>
             {% endif %}

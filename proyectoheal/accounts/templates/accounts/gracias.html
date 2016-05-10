@@ -1,8 +1,17 @@
+<!-- accounts/templates/accounts/gracias.html -->
+
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 
 {% block title %}Gracias por registrarte{% endblock title %}
 
 {% block content %}
-    <h2>{{ username }} gracias por registrarte!</h2>
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Hola!</h1>
+        <h2>{{ nombres }} gracias por registrarte!</h2>
+        <p>Bienvenido a la aplicacion MentalHeal.</p>
+        <p><a class="btn btn-primary btn-lg" href="{% url 'home.about' %}" role="button">About &raquo;</a></p>
+      </div>
+    </div>
 {% endblock content %}

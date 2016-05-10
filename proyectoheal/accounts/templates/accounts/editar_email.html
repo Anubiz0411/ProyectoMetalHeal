@@ -1,0 +1,16 @@
+<!-- accounts/templates/accounts/editar_email.html -->
+
+{% extends 'accounts/base_accounts.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Editar Correo{% endblock title %}
+
+{% block accounts_content %}
+    <h2 class="page-header">Editar Correo</h2>
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form|crispy }}<br>
+        <button class="btn btn-primary" type="submit">Actualizar Correo</button>
+        <a href="{% url 'accounts.index' %}" class="btn btn-warning" type="submit">Cancelar</a>
+    </form>
+{% endblock accounts_content %}

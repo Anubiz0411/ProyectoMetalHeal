@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'proyectoheal.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'bd_mentalheal_1',
+        'NAME': 'bd_mentalheal',
         'USER': 'root',
         'PASSWORD':'',
         'HOST':'',

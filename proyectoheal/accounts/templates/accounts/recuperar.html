@@ -1,0 +1,22 @@
+<!-- accounts/templates/accounts/recupear.html -->
+
+
+{% extends 'base.html' %}
+
+{% block title %}Recuperar Contraseña{% endblock title %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6 col-sm-offset-3">
+            <div class="page-header">
+                <h2>Recuperar Contraseña</h2>
+            </div>
+            
+
+            <form method="post" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        
+{% endblock content %}

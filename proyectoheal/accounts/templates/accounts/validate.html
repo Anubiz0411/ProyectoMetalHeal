@@ -23,8 +23,8 @@
         <table >
         
         <tr>
-                   <th> <font style="text-transform: uppercase;">{{ user.user.username }}</font></th>
-                    <th> <font style="text-transform: uppercase;">{{ user.user.first_name }}</font></th>
+                  <th> <font style="text-transform: uppercase;">{{ user.user.username }}</font></th>
+                  <th> <font style="text-transform: uppercase;">{{ user.user.first_name }}</font></th>
 
                    <th>{%if user.type_user == 'PA' %}
                             Paciente
@@ -40,10 +40,10 @@
                    <th>
                     {% csrf_token %}
                     {{ form|crispy }}
-                    <button name="usuario" type="submit" class="btn btn-primary" style="background-color: #20F205" value="validar@{{ user.user.username }}">Validar</button>
+                    <button name="usuario" type="submit" class="btn btn-primary" value="validar@{{ user.user.username }}">Aceptar</button>
                     {% csrf_token %}
                     {{ form|crispy}}
-                    <button name="usuario" type="submit" class="btn btn-primary "   style="background-color: #FC0414" value="borrar@{{ user.user.username }}">Borrar</button>
+                    <button name="usuario" type="submit" class="btn btn-danger" value="borrar@{{ user.user.username }}">Recharzar</button>
                     </th>
         </tr>
         </table>

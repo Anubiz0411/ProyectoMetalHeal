@@ -7,8 +7,8 @@
     <h2 class="page-header">Editar Perfil</h2>
     <form method="post" action="" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form|crispy }}
-        <button class="btn btn-primary" type="submit">Actualizar contraseña</button>
+        {{ form|crispy }}<br>
+        <button class="btn btn-primary" type="submit">Actualizar Datos</button>
         <a href="{% url 'accounts.index' %}" class="btn btn-warning" type="submit">Cancelar</a>
     </form>
 {% endblock accounts_content %}

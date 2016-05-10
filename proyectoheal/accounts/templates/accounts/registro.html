@@ -1,28 +1,25 @@
+<!-- accounts/templates/accounts/registro.html -->
 
 
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
-{% block link%}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-  <link href="{{ STATIC_URL }}bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-  <script src="{{ STATIC_URL }}bootstrap/js/bootstrap.js"></script>
-  {{ form.media }}
-{% endblock link %}
 
-{% block title %}Registro de usuario{% endblock title %}
+{% block title %}Registro de usuarios{% endblock title %}
 
 {% block content %}
     <div class="row">
         <div class="col-md-6 col-sm-offset-3">
             <div class="page-header">
-                <h2>Registro Usuario</h2>
+                <h2>Registro de Usuarios</h2>
             </div>
 
-            <form method="post" action="" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form|crispy }}
-                <button type="submit" class="btn btn-primary">Registrar</button>
-            </form>
-        </div>
-    </div>
+            <div class="row">
+                <a href="{% url 'accounts.registro_eps' %}" class="btn btn-primary btn-lg btn-block" role="button">Entidades Medicas EPS</a>
+                <a href="{% url 'accounts.registro_usuario' %}" class="btn btn-default btn-lg btn-block" role="button">Medico Especialista</a>
+                <a href="{% url 'accounts.registro_usuario' %}" class="btn btn-default btn-lg btn-block" role="button">Medico General</a>
+                <a href="{% url 'accounts.registro_usuario' %}" class="btn btn-default btn-lg btn-block" role="button">Paciente</a>
+
+ 
+            </div>
+        
+
 {% endblock content %}
