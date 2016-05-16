@@ -1,0 +1,100 @@
+
+
+{% extends 'accounts/base_accounts.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Horarios Disponibles{% endblock title %}
+
+
+{% block accounts_content %}
+    <h2 class="page-header">Horarios disponibles</h2>
+    {% for cita in citas %}
+    <form method="post" action="">
+        <style type="text/css">
+    table {
+       border:1px solid black;
+       border-collapse:separate;
+       }
+    th, td {
+       border:1px solid black;
+       
+       padding: 20px;
+       }
+ </style>
+        <table >
+        <tr>
+                   {% if cita.fecha == "0" %}
+                    <th> <font style="text-transform: uppercase;">Lunes</font></th>
+            {% elif cita.fecha == "1" %}
+                    <th> <font style="text-transform: uppercase;">Martes</font></th>
+            {% elif cita.fecha == "2" %}
+                    <th> <font style="text-transform: uppercase;">Miercoles</font></th>
+            {% elif cita.fecha == "3" %}
+                    <th> <font style="text-transform: uppercase;">Jueves</font></th>
+            {% elif cita.fecha == "4" %}
+                    <th> <font style="text-transform: uppercase;">Viernes</font></th>
+            {% elif cita.fecha == "5" %}
+                    <th> <font style="text-transform: uppercase;">Sabado</font></th>
+            {% elif cita.fecha == "6" %}
+                    <th> <font style="text-transform: uppercase;">Dominigo</font></th>
+            {% else %}
+                    <th> <font style="text-transform: uppercase;">{{ cita.fecha }}</font></th>
+            {% endif %}
+
+            {% if cita.hora == "0" %}
+                   <th> <font style="text-transform: uppercase;">6:00</font></th>
+            {% elif cita.hora == "1" %}
+                   <th> <font style="text-transform: uppercase;">6:30</font></th>
+            {% elif cita.hora == "2" %}
+                   <th> <font style="text-transform: uppercase;">7:00</font></th>
+            {% elif cita.hora == "3" %}
+                   <th> <font style="text-transform: uppercase;">7:30</font></th>
+            {% elif cita.hora == "4" %}
+                   <th> <font style="text-transform: uppercase;">8:00</font></th>
+            {% elif cita.hora == "5" %}
+                   <th> <font style="text-transform: uppercase;">8:30</font></th>
+            {% elif cita.hora == "6" %}
+                   <th> <font style="text-transform: uppercase;">9:00</font></th>
+            {% elif cita.hora == "7" %}
+                   <th> <font style="text-transform: uppercase;">9:30</font></th>
+            {% elif cita.hora == "8" %}
+                   <th> <font style="text-transform: uppercase;">10:00</font></th>
+            {% elif cita.hora == "9" %}
+                   <th> <font style="text-transform: uppercase;">10:30</font></th>
+            {% elif cita.hora == "10" %}
+                   <th> <font style="text-transform: uppercase;">11:00</font></th>
+            {% elif cita.hora == "11" %}
+                   <th> <font style="text-transform: uppercase;">11:30</font></th>
+            {% elif cita.hora == "12" %}
+                   <th> <font style="text-transform: uppercase;">12:00</font></th>
+            {% elif cita.hora == "13" %}
+                   <th> <font style="text-transform: uppercase;">12:30</font></th>
+            {% elif cita.hora == "14" %}
+                   <th> <font style="text-transform: uppercase;">13:00</font></th>
+            {% elif cita.hora == "15" %}
+                   <th> <font style="text-transform: uppercase;">13:30</font></th>
+            {% elif cita.hora == "16" %}
+                   <th> <font style="text-transform: uppercase;">14:00</font></th>
+            {% elif cita.hora == "17" %}
+                   <th> <font style="text-transform: uppercase;">14:30</font></th>
+            {% elif cita.hora == "18" %}
+                   <th> <font style="text-transform: uppercase;">15:00</font></th>
+            {% elif cita.hora == "19" %}
+                   <th> <font style="text-transform: uppercase;">15:30</font></th>
+            {% elif cita.hora == "20" %}
+                   <th> <font style="text-transform: uppercase;">16:00</font></th>
+            {% elif cita.hora == "21" %}
+                   <th> <font style="text-transform: uppercase;">16:30</font></th>
+            {% elif cita.hora == "22" %}
+                   <th> <font style="text-transform: uppercase;">17:00</font></th>
+            {% elif cita.hora == "23" %}
+                   <th> <font style="text-transform: uppercase;">17:30</font></th>
+            {% elif cita.hora == "24" %}
+                   <th> <font style="text-transform: uppercase;">18:00</font></th>
+            {% else %}
+                    <th> <font style="text-transform: uppercase;">{{ cita.hora }}</font></th>
+            {% endif %}
+        </tr>
+        </table>
+    </form>
+    {% endfor %}
+{% endblock accounts_content %}

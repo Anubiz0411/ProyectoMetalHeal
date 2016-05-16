@@ -87,12 +87,12 @@
                           <span class="input-group-addon"><span class="glyphicon glyphicon-th-list"></span></span>
                           <input class="form-control" type="text" id="formGroup" value="HOMBRE" disabled>
                         </div>
-                        {% elif usuario.type_user == 'M' %}
+                        {% elif usuario.type_gen == 'M' %}
                         <div class="input-group col-sm-3">
                           <span class="input-group-addon"><span class="glyphicon glyphicon-th-list"></span></span>
                           <input class="form-control" type="text" id="formGroup" value="MUJER" disabled>
                         </div>
-                        {% elif usuario.type_user == 'O' %}
+                        {% elif usuario.type_gen == 'O' %}
                         <div class="input-group col-sm-3">
                           <span class="input-group-addon"><span class="glyphicon glyphicon-th-list"></span></span>
                           <input class="form-control" type="text" id="formGroup" value="OTRO" disabled>
@@ -106,17 +106,17 @@
                 <label class="col-sm-2 control-label" for="formGroup" id="tel">Telefono</label>
                         <div class="input-group col-sm-3">
                           <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
-                          <input class="form-control" type="text" id="formGroup" value="{{ usuario.user.phone }}" disabled>
+                          <input class="form-control" type="text" id="formGroup" value="{{ usuario.phone }}" disabled>
                         </div><br><br>
                 <label class="col-sm-2 control-label" for="formGroup" id="dir">Direccion</label>
                         <div class="input-group col-sm-3">
                           <span class="input-group-addon"><span class="glyphicon glyphicon-globe"></span></span>
-                          <input class="form-control" type="text" id="formGroup" value="{{ usuario.user.direccion }}" disabled>
+                          <input class="form-control" type="text" id="formGroup" value="{{ usuario.direccion }}" disabled>
                         </div><br><br>
                 <label class="col-sm-2 control-label" for="formGroup" id="bir">Fecha de Naciemiento</label>
                         <div class="input-group col-sm-3">
                           <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                          <input class="form-control" type="text" id="formGroup" value="{{ usuario.user.birthday }}" disabled>
+                          <input class="form-control" type="text" id="formGroup" value="{{ usuario.birthday }}" disabled>
                         </div><br><br>
                         </div>
 {% endblock accounts_content %}

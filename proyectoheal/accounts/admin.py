@@ -17,5 +17,4 @@ class UserModelAdmin(admin.ModelAdmin):
 
 
 admin.site.register(UsuariosParaValidar,UserModelAdmin)
-#admin.site.unregister(User)
 admin.site.unregister(Group)

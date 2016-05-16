@@ -10,9 +10,16 @@
                 <a href="{% url 'accounts.validate' %}" class="list-group-item">Validar</a>
                 <a href="{% url 'accounts.gestion_usuario' %}" class="list-group-item">Gestion Usuario</a>
                 {% endif %}
+                {% if usuario.type_user == 'GE' or usuario.type_user == 'ES' %}
+                <a href="{% url 'accounts.crear_agenda' %}" class="list-group-item">Agenda</a>
+                {% endif%}
+                {% if usuario.type_user == 'PA' %}
+                <a href="{% url 'accounts.agendar_cita' %}" class="list-group-item">Cita Medica</a>
+                {% endif%}
                 <a href="{% url 'accounts.editar_usuario' %}" class="list-group-item">Editar Perfil</a>
                 <a href="{% url 'accounts.editar_email' %}" class="list-group-item">Editar Correo</a>
-                <a href="{% url 'accounts.editar_password' %}" class="list-group-item">Editar contraseña</a>
+                <a href="{% url 'accounts.editar_password' %}" class="list-group-item">Editar Contraseña</a>
+
             </div>
         </div>
         <div class="col-md-10">

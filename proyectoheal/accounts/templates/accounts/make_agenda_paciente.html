@@ -1,0 +1,148 @@
+
+
+{% extends 'accounts/base_accounts.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Gestion de Agenda{% endblock title %}
+
+
+{% block accounts_content %}
+    <h2 class="page-header">Cita Medica</h2>
+    <style type="text/css">
+  table {
+       border:1px solid black;
+       border-collapse:separate;
+       }
+    th, td {
+        border:1px solid black;
+        width: 100px; /*Aquí va el ancho de la Celda*/
+        height: 35px; /*Aquí el Alto*/
+       padding: 5px;
+       }
+ </style>
+    <table id="dia">
+        <tr>
+            <th><font >Hora/Dia</font> </th>
+            <th> <font style="text-transform: uppercase;">lunes</font></th>
+            <th> <font style="text-transform: uppercase;">Martes</font></th>
+            <th> <font style="text-transform: uppercase;">Miercoles</font></th>
+            <th> <font style="text-transform: uppercase;">Jueves</font></th>
+            <th> <font style="text-transform: uppercase;">Viernes</font></th>
+            <th> <font style="text-transform: uppercase;">Sabado</font></th>
+            <th> <font style="text-transform: uppercase;">Domingo</font></th>
+        </tr>
+    </table>
+    {% for cita,id in citas %}
+    <form method="post" action="">
+        <style type="text/css">
+    #dia  {
+
+        width: 100%;
+       }
+    #dia2  {
+
+        width: 100%;
+       }
+    #dia2 tr, th {
+
+        width: 110px; /*Aquí va el ancho de la Celda*/
+        height: 35px; /*Aquí el Alto*/
+       padding: 5px;
+       }
+     #dia tr, th{
+         width: 110px;
+         height: 35px;
+         text-align: center;
+     }
+     #dia2 tr, th, button{
+         width: 110px;
+         height: 35px;
+     }
+     #dia tr, th, button{
+         width: 110px;
+         height: 35px;
+     }
+
+     table{
+         border: none;
+     }
+ </style>
+
+        {% if id == 0 or id == 7 or id == 14 or id == 21 or id == 28 or id == 35 or id == 42 or id == 49 or id == 56 or id == 63 or id == 70 or id == 77 or id == 84 or id == 91 or id == 98 or id == 105 or id == 112 or id == 119 or id == 126 or id == 133 or id == 140 or id == 147 or id == 154 or id == 161 or id == 168 or id == 175%}
+        <table id ="dia2" >
+        <tr>
+         {% if id == 0 %}
+            <th> <font style="text-transform: uppercase;">6:00</font></th>
+         {% elif id == 7 %}
+            <th> <font style="text-transform: uppercase;">6:30</font></th>
+         {% elif id == 14 %}
+            <th> <font style="text-transform: uppercase;">7:00</font></th>
+            {% elif id == 21 %}
+            <th> <font style="text-transform: uppercase;">7:30</font></th>
+            {% elif id == 28 %}
+            <th> <font style="text-transform: uppercase;">8:00</font></th>
+            {% elif id == 35 %}
+            <th> <font style="text-transform: uppercase;">8:30</font></th>
+            {% elif id == 42 %}
+            <th> <font style="text-transform: uppercase;">9:30</font></th>
+            {% elif id == 49 %}
+            <th> <font style="text-transform: uppercase;">10:00</font></th>
+            {% elif id == 56 %}
+            <th> <font style="text-transform: uppercase;">10:30</font></th>
+            {% elif id == 63 %}
+            <th> <font style="text-transform: uppercase;">11:00</font></th>
+            {% elif id == 70 %}
+            <th> <font style="text-transform: uppercase;">11:30</font></th>
+            {% elif id == 77 %}
+            <th> <font style="text-transform: uppercase;">12:00</font></th>
+            {% elif id == 84 %}
+            <th> <font style="text-transform: uppercase;">12:30</font></th>
+            {% elif id == 91 %}
+            <th> <font style="text-transform: uppercase;">1:00</font></th>
+            {% elif id == 98 %}
+            <th> <font style="text-transform: uppercase;">1:30</font></th>
+            {% elif id == 105 %}
+            <th> <font style="text-transform: uppercase;">2:00</font></th>
+            {% elif id == 112 %}
+            <th> <font style="text-transform: uppercase;">2:30</font></th>
+            {% elif id == 119 %}
+            <th> <font style="text-transform: uppercase;">3:00</font></th>
+            {% elif id == 126 %}
+            <th> <font style="text-transform: uppercase;">3:30</font></th>
+            {% elif id == 133 %}
+            <th> <font style="text-transform: uppercase;">4:00</font></th>
+            {% elif id == 140 %}
+            <th> <font style="text-transform: uppercase;">4:30</font></th>
+            {% elif id == 147 %}
+            <th> <font style="text-transform: uppercase;">5:00</font></th>
+            {% elif id == 154 %}
+            <th> <font style="text-transform: uppercase;">5:30</font></th>
+            {% elif id == 161 %}
+            <th> <font style="text-transform: uppercase;">6:00</font></th>
+           {% elif id == 168 %}
+            <th> <font style="text-transform: uppercase;">6:30</font></th>
+             {% endif %}
+        {% endif %}
+        {% if cita == 1  %}
+                    <th>
+                    {% csrf_token %}
+                   <button name="usuario" type="submit" class="btn btn-danger" value="borrar@{{ id }}">Cancelar</button>
+                    </th>
+        {% elif cita == 2 %}
+                    <th>
+                    {% csrf_token %}
+                   <button name="usuario" type="submit" class="btn btn-default" value="inactivo@{{ id }}">No Disponible</button>
+                    </th>
+        {% else %}
+                    <th>
+                    {% csrf_token %}
+                    <button name="usuario" type="submit" class="btn btn-primary" value="activar@{{ id }}">Reservar</button>
+                    </th>
+        {% endif %}
+
+        {% if id == 6 or id == 13 or id == 20 or id == 27 or id == 34 or id == 41 or id == 48 or id == 55 or id == 62 or id == 69 or id == 76 or id == 83 or id == 90 or id == 97 or id == 104 or id == 111 or id == 118 or id == 125 or id == 132 or id == 139 or id == 146 or id == 153 or id == 160 or id == 167 or id == 174  %}
+            </tr>
+            </table>
+        {% endif %}
+    </form>
+    {% endfor %}
+{% endblock accounts_content %}

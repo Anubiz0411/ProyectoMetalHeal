@@ -8,10 +8,11 @@ from datetime import datetime
 
 class Cita(models.Model):
     IDmedico=models.CharField(max_length=20)
-    IDpaciente=models.CharField(max_length=20,default='-1')
-    hora=models.TimeField()
-    fecha=models.DateField(default="2016-04-28")
-
+    hora=models.CharField(max_length=10)
+    fecha=models.CharField(max_length=10)
+    disponible = models.BooleanField(default=False)
+    IDpaciente = models.CharField(max_length=20, default="-1")
+    
 class UsuariosParaValidar(models.Model):
     cargo = (
         ('EP','EPS'),
@@ -46,4 +47,5 @@ class UsuariosParaValidar(models.Model):
         return str(self.type_user)
     def get_full_name(self):
         return str(self.photo)
+
 

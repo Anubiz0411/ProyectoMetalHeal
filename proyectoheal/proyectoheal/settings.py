@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.admindocs',
     'home',
     'accounts',
+    'agenda',
     'registration',
     'crispy_forms',
     'datetimewidget',

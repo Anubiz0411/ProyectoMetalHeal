@@ -67,7 +67,6 @@ class ResetPasswordForm(forms.Form):
 class ValidateUserForm(forms.Form):
     elegido = forms.BooleanField()
     
-#FORMULARIO DE REGISTRO CITAS
 class RegistrationScheduleForm(forms.Form):
     dateTimeOptions = {
         'format': 'yyyy-mm-dd',
