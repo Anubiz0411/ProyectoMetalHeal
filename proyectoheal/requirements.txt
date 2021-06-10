@@ -16,7 +16,7 @@ colorama==0.2.5
 configobj==4.7.2
 cycler==0.10.0
 decorator==3.4.0
-django==1.9.4
+django==2.2.24
 django-crispy-forms==1.6.0
 django-datetime-widget==0.9.3
 django-registration==2.0.4
